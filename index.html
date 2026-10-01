@@ -12,10 +12,52 @@
     </header>
 
     <main class="contact">
-        <section class = "card">
+
+        <!-- Contactez nous text -->
+        <section class = "card" aria-labelledby="contact-title">
+            <h1 id="contact-title" class="card-title">Contactez-nous</h1>
+            <p class="card-text">Notre agence vous promet une expertise personnalisée et un accompagnement sur-mesure pour la réalisation de votre site internet et/ou de votre application.</p>
+
+            <form class="form" action="#" method="post">
+
+                <!-- button slide crapaud - grenouille -->
+
+                <!-- Formulaire de contacte -->
+                <div class="form-grid">
+                    <div class="field">
+                        <label for="nom">Nom*</label>
+                        <input type="text" id="nom" name="nom" autocomplete="family-name" required>
+                    </div>
+                    <div class="field">
+                        <label for="prenom">Prénom*</label>
+                        <input type="text" id="prenom" name="prenom" autocomplete="given-name" required>
+                    </div>
+                    <div class="field">
+                        <label for="tel">Numéro de téléphone*</label>
+                        <input type="tel" id="tel" name="tel" autocomplete="tel" required>
+                    </div>
+                    <div class="field">
+                        <label for="email">Email*</label>
+                        <input type="email" id="email" name="email" autocomplete="email" required>
+                    </div>
+                    <div class="field">
+                        <label for="adresse">Adresse :</label>
+                        <input type="text" id="adresse" name="adresse" autocomplete="street-address">
+                    </div>
+                    <div class="field">
+                        <label for="code-postal">Code Postal :</label>
+                        <input type="text" id="code-postal" name="code-postal" autocomplete="postal-code">
+                    </div>
+                    <div class="field">
+                        <label for="ville">Ville :</label>
+                        <input type="text" id="ville" name="ville" autocomplete="address-level2">
+                    </div>
+                </div>
+                
+            </form>
         </section>
 
-        <!-- aside info addresse, num telephone, email-->
+        <!-- aside info adresse, num telephone, email-->
         <aside class="info">
             <h2 class="info-title">MFM Digital</h2>
             <address class="info-address">
