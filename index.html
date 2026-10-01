@@ -13,7 +13,7 @@
 
     <main class="contact">
 
-        <!-- Contactez nous text -->
+        <!-- contactez nous text -->
         <section class = "card" aria-labelledby="contact-title">
             <h1 id="contact-title" class="card-title">Contactez-nous</h1>
             <p class="card-text">Notre agence vous promet une expertise personnalisée et un accompagnement sur-mesure pour la réalisation de votre site internet et/ou de votre application.</p>
@@ -21,8 +21,18 @@
             <form class="form" action="#" method="post">
 
                 <!-- button slide crapaud - grenouille -->
+                <fieldset class="toggle">
+                    <legend class="visually-hidden">vous êtes</legend>
+                    <input type="radio" name="espece" id="crapaud" value="crapaud" checked>
+                    <input type="radio" name="espece" id="grenouille" value="grenouille">
+                    <span class="toggle-pill" aria-hidden="true"></span>
+                    <label for="crapaud" class="toggle-option toggle-option--crapaud">
+                        <img src="assets/icon-crapaud.svg" alt="crapaud" width="21.8572" height="20.4005">Crapaud</label>
+                    <label for="grenouille" class="toggle-option toggle-option--grenouille">
+                        <img src="assets/icon-grenouille.svg" alt="grenouille" width="23" height="21">Grenouille</label>
+                </fieldset>
 
-                <!-- Formulaire de contacte -->
+                <!-- formulaire de contacte -->
                 <div class="form-grid">
                     <div class="field">
                         <label for="nom">Nom*</label>
@@ -32,15 +42,15 @@
                         <label for="prenom">Prénom*</label>
                         <input type="text" id="prenom" name="prenom" autocomplete="given-name" required>
                     </div>
-                    <div class="field">
+                    <div class="field" field--full>
                         <label for="tel">Numéro de téléphone*</label>
                         <input type="tel" id="tel" name="tel" autocomplete="tel" required>
                     </div>
-                    <div class="field">
+                    <div class="field" field--full>
                         <label for="email">Email*</label>
                         <input type="email" id="email" name="email" autocomplete="email" required>
                     </div>
-                    <div class="field">
+                    <div class="field" field--full>
                         <label for="adresse">Adresse :</label>
                         <input type="text" id="adresse" name="adresse" autocomplete="street-address">
                     </div>
@@ -53,7 +63,15 @@
                         <input type="text" id="ville" name="ville" autocomplete="address-level2">
                     </div>
                 </div>
-                
+
+                <!-- consent checkbox -->
+                <label class = "consent">
+                    <input type="checkbox" name="consent" required>
+                    <span class="consent-box"></span>
+                    <span class="consent-text">J’accepte que mes données soient recueillies par une famille de crapauds ou de grenouilles aux étangs d’Ixelles.</span>
+                </label>
+
+                <button type="submit" class="submit-button">Envoyer</button>
             </form>
         </section>
 
