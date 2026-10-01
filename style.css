@@ -4,7 +4,7 @@
     --toggle-bg: #efefef;
     --line: #d0d0d0;
     --text: #000;
-    --font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --font: Helvetica, "Helvetica Neue", Arial, sans-serif;
     --gutter: 16px;
 }
 
@@ -62,7 +62,7 @@ h1, h2, p, fieldset {
     grid-template-areas: "info card";
     column-gap: 32px;
     max-width: calc(1030px + 2 * var(--gutter));
-    margin: 70px auto 0;
+    margin: -70px auto 0;
     padding: 0 var(--gutter) 75px;
 }
 
@@ -73,7 +73,7 @@ h1, h2, p, fieldset {
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 28px rgba(28, 133, 166, 0.13);
-    padding: 26px 48px;
+    padding: 26px 48px 64px;
 }
 
 .card-title {
@@ -200,6 +200,11 @@ h1, h2, p, fieldset {
 .field input:focus {
     outline: none;
     border-bottom-color: var(--green);
+}
+
+/* Jsp si c'est intentionnel ou pas, mais la ligne en dessous de Prénom est #dcdcdc au lieu de #d0d0d0. */
+#prenom:not(:focus) {
+    border-bottom-color: #dcdcdc;
 }
 
 /* consent checkbox */
