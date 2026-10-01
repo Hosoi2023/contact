@@ -1,0 +1,378 @@
+:root {
+    --green: #9dd129;
+    --dark-green: #8bbb20;
+    --toggle-bg: #efefef;
+    --line: #d0d0d0;
+    --text: #000;
+    --font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --gutter: 16px;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font);
+    color: var(--text);
+    background: #fff;
+    -webkit-font-smoothing: antialiased; /* smoother text for macOS */
+}
+
+img {
+    max-width: 100%;
+}
+
+h1, h2, p, fieldset {
+    margin: 0;
+}
+
+/* button slide crapaud - grenouille */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* hero */
+.hero {
+    height: 374px;
+    overflow: hidden;
+}
+
+.hero-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+}
+
+/* main */
+.contact {
+    display: grid;
+    grid-template-columns: 1fr minmax(0, 584px);
+    grid-template-areas: "info card";
+    column-gap: 32px;
+    max-width: calc(1030px + 2 * var(--gutter));
+    margin: 70px auto 0;
+    padding: 0 var(--gutter) 75px;
+}
+
+/* card */
+.card {
+    grid-area: card;
+    position: relative;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 28px rgba(28, 133, 166, 0.13);
+    padding: 26px 48px;
+}
+
+.card-title {
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+.card-text {
+    margin-top: 4px;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.8;
+
+}
+
+/* slide toggle */
+.toggle {
+    position: relative;
+    display: grid;
+    grid-template-columns: 48.08% 51.92%;
+    width: min(312px, 100%);
+    height: 41px;
+    margin-top: 30px;
+    padding: 0;
+    border: 0;
+    border-radius: 20px;
+    background: var(--toggle-bg);
+}
+
+.toggle input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.toggle-pill {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 48.08%;
+    border-radius: 20px;
+    background: var(--green);
+    transition: left 0.35s ease, width 0.35s ease;
+}
+
+#grenouille:checked ~ .toggle-pill {
+    left: 48.08%;
+    width: 51.92%;
+}
+
+.toggle-option {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    user-select: none;
+    color: var(--text);
+    transition: color 0.35s ease;
+}
+
+.toggle-option img {
+    display: block;
+    transition: filter 0.35s ease;
+}
+
+/* turn the inactive text from white to black for readability */
+.toggle-option--crapaud img {
+    filter: brightness(0);
+}
+
+#crapaud:checked ~ .toggle-option--crapaud, #grenouille:checked ~ .toggle-option--grenouille {
+    color: #fff;
+}
+
+#crapaud:checked ~ .toggle-option--crapaud img {
+    filter: none;
+}
+
+/* turn active grenouille icon from black to white for readability */
+#grenouille:checked ~ .toggle-option--grenouille img {
+    filter: brightness(0) invert(1);
+}
+
+.toggle input:focus-visible ~ .toggle-pill {
+    outline: 2px solid #1c85a6;
+    outline-offset: 2px;
+}
+
+/* form text inputs */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 48px;
+    row-gap: 28px;
+    margin-top: 36px;
+}
+
+.field--full {
+    grid-column: 1 / -1;
+}
+
+.field label {
+    display: block;
+    font-size: 18px;
+    line-height: 1.2;
+}
+
+.field input {
+    display: block;
+    width: 100%;
+    height: 27px;
+    padding: 0;
+    border: 0;
+    border-bottom: 1.5px solid var(--line);
+}
+
+.field input:focus {
+    outline: none;
+    border-bottom-color: var(--green);
+}
+
+/* consent checkbox */
+.consent {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-top: 40px;
+    cursor: pointer;
+}
+
+.consent input {
+    position: absolute;
+    opacity: 0;
+    width: 18px;
+    height: 18px;
+    margin: 0;    
+}
+
+.consent-box {
+    position: relative;
+    flex: none;
+    width: 18px;
+    height: 18px;
+    margin-top: 5px;
+    border: 2px solid var(--green);
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.consent-box::after {
+    content: "";
+    position: absolute;
+    inset: 2px;
+    border-radius: 2px;
+    background: var(--green);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    transform: scale(0);
+    transition: transform 0.15s ease;
+}
+
+.consent input:checked + .consent-box::after {
+    transform: scale(1);
+}
+
+.consent input:focus-visible + .consent-box {
+    outline: 2px solid #1c85a6;
+    outline-offset: 2px;
+}
+
+.consent-text {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.8;
+}
+
+/* submit button */
+.submit-button {
+    display: block;
+    width: 198px;
+    height: 57px;
+    margin: 38px auto 0;
+    border: 0;
+    border-radius: 44px;
+    background: var(--green);
+    color: #fff;
+    font-family: var(--font);
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.submit-button:hover,
+.submit-button:focus-visible {
+    background: var(--dark-green);
+}
+
+/* info column */
+.info {
+    grid-area: info;
+    padding-top: 177px;
+}
+
+.info-title {
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+.info-address {
+    font-style: normal;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 2.3;
+}
+
+.info-address a {
+    color: inherit;
+}
+
+.socials {
+    display: flex;
+    gap: 16px;
+    margin: 11px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.socials a,
+.socials img {
+    display: block;
+}
+
+/* responsive */
+@media (max-width: 900px) {
+    .hero {
+        height: 260px;
+  }
+
+    .contact {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas:
+        "card"
+        "info";
+        max-width: calc(584px + 2 * var(--gutter));
+        margin-top: -60px;
+        padding-bottom: 48px;
+  }
+
+    .info {
+        padding-top: 48px;
+  }
+}
+
+@media (max-width: 520px) {
+    .hero {
+        height: 200px;
+  }
+
+    .card {
+        padding: 24px 24px 40px;
+  }
+
+    .card-title,
+    .info-title {
+        font-size: 28px;
+  }
+
+    .card-text,
+    .info-address {
+        font-size: 16px;
+  }
+
+    .toggle-option {
+        font-size: 16px;
+        gap: 6px;
+  }
+
+    .form-grid {
+        grid-template-columns: minmax(0, 1fr);
+  }
+
+    .field label {
+        font-size: 16px;
+  }
+
+    .info-address {
+        line-height: 2;
+  }
+}
