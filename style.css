@@ -17,7 +17,7 @@ body {
     font-family: var(--font);
     color: var(--text);
     background: #fff;
-    -webkit-font-smoothing: antialiased; /* smoother text for macOS */
+    -webkit-font-smoothing: antialiased; /* texte plus fin et léger sur macOS */
 }
 
 img {
@@ -28,7 +28,7 @@ h1, h2, p, fieldset {
     margin: 0;
 }
 
-/* button slide crapaud - grenouille */
+/* cache les éléments qui ne sont pas visibles à l'écran pour les lecteurs d'écran */
 .visually-hidden {
     position: absolute;
     width: 1px;
@@ -146,20 +146,22 @@ h1, h2, p, fieldset {
     transition: filter 0.35s ease;
 }
 
-/* turn the inactive text from white to black for readability */
+/* passe l'icône inactive du blanc au noir pour plus de lisibilité */
 .toggle-option--crapaud img {
     filter: brightness(0);
 }
 
+/* texte blanc sur l'option sélectionnée */
 #crapaud:checked ~ .toggle-option--crapaud, #grenouille:checked ~ .toggle-option--grenouille {
     color: #fff;
 }
 
+/* affiche l'icône crapaud dans son blanc d'origine quand l'option est sélectionnée */
 #crapaud:checked ~ .toggle-option--crapaud img {
     filter: none;
 }
 
-/* turn active grenouille icon from black to white for readability */
+/* passe l'icône grenouille active du noir au blanc pour plus de lisibilité */
 #grenouille:checked ~ .toggle-option--grenouille img {
     filter: brightness(0) invert(1);
 }
@@ -169,7 +171,7 @@ h1, h2, p, fieldset {
     outline-offset: 2px;
 }
 
-/* form text inputs */
+/* form texte inputs */
 .form-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -202,7 +204,7 @@ h1, h2, p, fieldset {
     border-bottom-color: var(--green);
 }
 
-/* Jsp si c'est intentionnel ou pas, mais la ligne en dessous de Prénom est #dcdcdc au lieu de #d0d0d0. */
+/* Jsp si c'est intentionnel ou pas, mais sur Figma la ligne en dessous de Prénom est #dcdcdc au lieu de #d0d0d0. */
 #prenom:not(:focus) {
     border-bottom-color: #dcdcdc;
 }
